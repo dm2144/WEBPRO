@@ -14,6 +14,7 @@ header {
     color: #fff;
     text-align: center;
     padding: 20px;
+    Position:sticky; top:0;
 }
 
 .headeraH1 {
@@ -98,7 +99,7 @@ main h3 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 140px;
 }
 
 .service-column {
@@ -138,15 +139,32 @@ main h3 {
 /* Call to Action Styles */
 .cta-container {
     text-align: center;
-    padding: 20px;
-    background-color: #f5f5f5;
-    margin-top: 30px;
+    padding: 50px;
+    margin: 30px;
+    background-color:rgb(129, 117, 100);
+    border-width:1px;
+    border-style:dashed;
+    font-size:larger;
+}
+
+.cta-container h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:larger;
+    color:rgb(30, 5, 5);
+    font-weight:bolder;
+    text-transform:uppercase;
+
+}
+.cta-container p{
+    font-size: larger;
+    font-weight:bold;
+    
 }
 
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #ba4182;
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
