@@ -99,38 +99,41 @@
             <div class= "error" id="co-error"></div>
         </div><br>
 
-        <button type="button" onclick="myFunction()">
-            SUBMIT
-        <a href="index1.html"></a></button>
+        <button type="button" onclick="myFunction()" >SUBMIT</button>
     </form>
 
     <script>
         let flag=true;
-        function myFunction() {
+                
+        function myFunction(event) {
             var usernameInput = document.getElementById("username");
             var confirmInput = document.getElementById("confirm_password");
             var emailInput = document.getElementById("mail");
             var passwordInput = document.getElementById("enter-password");
-            
 
-            
-            // Remove existing error and success classes
+            // to remove existing error and success classes
             usernameInput.classList.remove("error", "success");
             emailInput.classList.remove("error", "success");
-            //passInput.classList.remove("error", "success");
+            passwordInput.classList.remove("error", "success");
             confirmInput.classList.remove("error", "success");
+
+            // to clear error messages when the input is corrected
+            document.getElementById("name-error").textContent = "";
+            document.getElementById("mail-error").textContent = "";
+            document.getElementById("pass-error").textContent = "";
+            document.getElementById("co-error").textContent = "";
 
             if (usernameInput.value.trim() === "") {
                 usernameInput.classList.add("error");
-                document.getElementById("name-error").textContent="Require username"
-                flag=false;
+                document.getElementById("name-error").textContent = "Require username";
+                flag = false;
             } else {
                 usernameInput.classList.remove("error");
                 usernameInput.classList.add("success");
-                
-                flag=true;
+                flag = true;
             }
 
+            
             //email
             if (emailInput.value.trim() === "") {
                 emailInput.classList.add("error");
@@ -147,24 +150,26 @@
                 flag=true;
             }
 
-            // If password field is empty
-             if (passwordInput.value.trim()==="") {
+            // password 
+            if (passwordInput.value.trim()==="") {
                  passwordInput.classList.add("error");
                  document.getElementById("pass-error").textContent="Password required"
-                //  flag=false;
+                 flag=false;
              }
-            // if (passwordInput.value.trim().length<=8) {
-            //     passwordInput.classList.add("error");
-            //     document.getElementById("pass-error").textContent="Password required"
-            //     flag=false;
-            // }
-            
-            else {
+            else if(passwordInput.value.trim().length<=8){
+                passwordInput.classList.remove("error");
+                //passwordInput.classList.add("error");
+                passwordInput.classList.add("success");
+                document.getElementById("pass-error").textContent="8 characters required"
+                flag=false;
+            }
+            else{
+                passwordInput.classList.remove("error");
                 passwordInput.classList.add("success");
                 flag=true;
             }
-
-            //confirm pass
+            
+            // confirm password 
             if (confirmInput.value.trim() === "") {
                 confirmInput.classList.add("error");
                 document.getElementById("co-error").textContent="passwords req"
@@ -172,8 +177,8 @@
             } else {
                 confirmInput.classList.add("success");
                 flag=true;
-            }
-            //checking if passwords match
+
+            // checking 
             if (confirmInput.value !== passwordInput.value) {
                 //flag=false;
                 confirmInput.classList.add("error"); 
@@ -184,16 +189,23 @@
                 confirmInput.classList.add("success");
                 flag=true;
             }
-            
-            //submits when all the conditions are satisfied
-            if(!flag) {
-                alert("form submitted")
+
+            // Handle the alert and form submission
+            if (!flag) {
+                alert("Please check the form for errors.");
+                event.preventDefault();
+                
             }
             else{
-                event.preventDefault()
-            };
+                alert("form submitted")
+                window.location.href = "index1.html";
 
+            }
         }
+    }
     </script>
 </body>
 </html>
+
+
+
