@@ -1,131 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        /* Style for the form: setting width, auto margin for centering, padding, 
-        background color, border radius for rounded corners, and font size */
-        #form {
-            width: 300px;
-            margin: 20vh auto 0 auto; /* This centers the form vertically and horizontally */
-            padding: 20px;
-            background-color: whitesmoke; /* Light gray background for the form */
-            border-radius: 4px; /* Rounded corners for the form */
-            font-size: 12px;
-            }
-
-        /* Style for the form's heading: setting the text color and alignment */
-        #form h1 {
-            color: #0f2027; /* Dark text color for the heading */
-            text-align: center; /* Center-align the heading */
-            }
-
-        /* Style for the form's button: padding, top margin, full width, text color, 
-        background color, no border, and rounded corners */
-        #form button {
-            padding: 10px;
-            margin-top: 10px; /* Space above the button */
-            width: 100%; /* Make the button expand the full width of the form */
-            color: white; /* White text color for the button */
-            background-color: rgb(41, 57, 194); /* Blue background color for the button */
-            border: none; /* Remove the default border */
-            border-radius: 4px; /* Rounded corners for the button */
-            }
-
-        /* Container for input fields: using flexbox for layout, column direction */
-        .input-control {
-            display: flex;
-            flex-direction: column; /* Stack the children (label, input, error message) vertically */
-            }
-
-        /* Style for input fields inside the container: border style, rounded corners, 
-        block-level display, font size, padding, full width */
-        .input-control input {
-            border: 2px solid #7e7e7e; /* Light gray border for the inputs */
-            border-radius: 4px; /* Rounded corners for the inputs */
-            display: block; /* Display input field as a block */
-            font-size: 12px; /* Text size within the input field */
-            padding: 10px; /* Space inside the input field */
-            width: 100%; /* Input field takes up 100% of the form's width */
-            }
-            /* Remove focus outline from input fields */
-        .input-control input:focus {
-            outline: 0; /* Remove outline when input is focused */
-            }
-        /* Style for input fields with class "success": green border */
-        .input-control.success input {
-            border-color: #09c372; /* Green border to indicate successful input */
-            }
-        /* Style for input fields with class "error": red border */
-        .input-control.error input {
-            border-color: #ff3860; /* Red border to indicate an error in input */
-            }
-        /* Style for the error message: text color, font size, and height */
-        .input-control .error {
-            color: #ff3860; /* Red text color for error messages */
-            font-size: 9px; /* Smaller font size for error messages */
-            height: 13px; /* Explicit height to ensure consistent spacing */
-            }
-            
-    </style>
-</head>
-<body>
-    <form id=form action="index.php" method="POST"> 
-        <h1>FORM</h1>
-        <div class="input-control" >
-            <label for="username">username: </label>
-            <input type="text" id="username" required>
-            
-        </div><br>
-        <div class="input-control">
-            <label for="mail" >email: </label>
-            <input type="email" id="mail" placeholder="haini@gmail.com" required>
-        </div><br>
-        <div class="input-control">
-            <label for="password">password: </label>
-            <input type="password" minlength="8" required>
-        </div><br>
-        <div class="input-control">
-            <label for="confirm_password">confirm password: </label>
-            <input type="confirm_password" minlength="8" required>
-        </div><br>
-        
-        
-        <button class="input-control"
-            type="submit" onclick="myFunction()">SUBMIT
-        </button>
-        
-    </form>
-
-
-    <script>
-        
-        function myFunction(event) {
-            var usernameInput = document.getElementById("username");
-            function myFunction(event) {
-            
-            if (usernameInput.value.trim() == "") {
-                // const ka=usernameInput.classList;
-                usernameInput.classList.add("error");
-                
-                //event.preventDefault();
-            }
-            else{
-                usernameInput.classList.add("success")
-            }
-
-
-        }}
-        //document.getElementById("form").addEventListener("submit", myFunction);
-    </script>
-        
-    
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,12 +56,12 @@
             outline: 0; /* Remove outline when input is focused */
             }
         /* Style for input fields with class "success": green border */
-        .input-control.success {
+        .input-control .success {
             border-color: #09c372; /* Green border to indicate successful input */
             }
         /* Style for input fields with class "error": red border */
         .input-control.error input {
-            border-color: #ff3860; /* Red border to indicate an error in input */
+            border-color: #6038ff; /* Red border to indicate an error in input */
             }
         /* Style for the error message: text color, font size, and height */
         .input-control .error {
@@ -204,6 +76,7 @@
 </head>
 <body>
     <form id="form" action="index.php" method="POST">
+        
         <h1>FORM</h1>
         <div class="input-control">
             <label for="username">username: </label>
@@ -226,10 +99,13 @@
             <div class= "error" id="co-error"></div>
         </div><br>
 
-        <button type="button" onclick="myFunction()">SUBMIT</button>
+        <button type="button" onclick="myFunction()">
+            SUBMIT
+        <a href="index1.html"></a></button>
     </form>
 
     <script>
+        let flag=true;
         function myFunction() {
             var usernameInput = document.getElementById("username");
             var confirmInput = document.getElementById("confirm_password");
@@ -240,49 +116,81 @@
             
             // Remove existing error and success classes
             usernameInput.classList.remove("error", "success");
+            emailInput.classList.remove("error", "success");
+            //passInput.classList.remove("error", "success");
             confirmInput.classList.remove("error", "success");
 
             if (usernameInput.value.trim() === "") {
                 usernameInput.classList.add("error");
                 document.getElementById("name-error").textContent="Require username"
+                flag=false;
             } else {
                 usernameInput.classList.remove("error");
                 usernameInput.classList.add("success");
-                document.getElementById("name-error").textContent ="Name is required";
+                
+                flag=true;
             }
+
+            //email
             if (emailInput.value.trim() === "") {
                 emailInput.classList.add("error");
-                document.getElementById("mail-error").textContent="Require mail"} 
+                document.getElementById("mail-error").textContent="Require mail"
+                flag=false;}
             else if (!emailInput.value.trim().toLowerCase().endsWith("@gmail.com")) {
-               emailInput.classList.add("error");
+                emailInput.classList.add("error");
                 document.getElementById("mail-error").textContent ="Please use a Gmail address";
-        
+                event.preventDefault()
+                flag=false;
+            }else{
+                emailInput.classList.remove("error");
+                emailInput.classList.add("success");
+                flag=true;
             }
 
             // If password field is empty
-            if (passwordInput.value.trim() === "") {
-                passwordInput.classList.add("error");
-                document.getElementById("pass-error").textContent="Password required"
-            } else {
+             if (passwordInput.value.trim()==="") {
+                 passwordInput.classList.add("error");
+                 document.getElementById("pass-error").textContent="Password required"
+                //  flag=false;
+             }
+            // if (passwordInput.value.trim().length<=8) {
+            //     passwordInput.classList.add("error");
+            //     document.getElementById("pass-error").textContent="Password required"
+            //     flag=false;
+            // }
+            
+            else {
                 passwordInput.classList.add("success");
+                flag=true;
             }
+
+            //confirm pass
             if (confirmInput.value.trim() === "") {
                 confirmInput.classList.add("error");
                 document.getElementById("co-error").textContent="passwords req"
+                flag=false;
             } else {
                 confirmInput.classList.add("success");
+                flag=true;
             }
-
+            //checking if passwords match
             if (confirmInput.value !== passwordInput.value) {
-                confirmInput.classList.add("error");
+                //flag=false;
+                confirmInput.classList.add("error"); 
                 document.getElementById("co-error").textContent="passwords dont match"
+                event.preventDefault()
+                //flag=false;
             } else {
                 confirmInput.classList.add("success");
+                flag=true;
             }
             
             //submits when all the conditions are satisfied
-            if(confirmInput.value.trim() == passwordInput.value.trim() !== "" && emailInput.value.trim() !== "" && usernameInput.value.trim() !== "") {
+            if(!flag) {
                 alert("form submitted")
+            }
+            else{
+                event.preventDefault()
             };
 
         }
