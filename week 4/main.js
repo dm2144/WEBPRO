@@ -47,7 +47,3 @@ function renderHTML(data){
 
 
 
-
-
-
-
