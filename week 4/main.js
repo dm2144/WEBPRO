@@ -7,7 +7,8 @@ btn.addEventListener("click", function(){
     ourRequest.open('GET', 'https://dm2144.github.io/WEBPRO/week%204/cities1.json');
     ourRequest.onload = function() {
     var ourData = JSON.parse(ourRequest.responseText);
-    console.log(ourData[0]);
+    renderHTML(ourData);
+    btn.classList.add("hide-me");
     };
     ourRequest.send();
 
@@ -38,17 +39,7 @@ function renderHTML(data){
     }
     cityContainer.insertAdjacentHTML('beforeend' , htmlString);
 
-
-
-    var htmlString = "";
-    for (i=0; i<data.length; i++){
-htmlString += "<p>" + data[i].name + " is a city in " + data[i].country + ".</p>"
-;
 }
-cityContainer.insertAdjacentHTML('beforeend' , htmlString);
-btn.classList.add("hide-me");
-}
-
 
 
 
