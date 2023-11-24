@@ -18,7 +18,7 @@ const db=mysql.createConnection({
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.use(cookieParser()); // Place cookie-parser middleware here
+app.use(cookieParser()); 
 
 const authController = require('./controllers/auth');
 app.get('/profile', authController.isLoggedIn, (req, res) => {
@@ -53,18 +53,6 @@ db.connect((error)=>{
 
 app.use('/',require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));  
-
-// const profileRoutes = require('/profile');//profile
-// app.use('/profile', profileRoutes);
-// const { isLoggedIn } = require('./routes/auth');
-
-// app.get('/profile', isLoggedIn, (req, res) => {
-//     if (req.user) {
-//         res.render('profile', { user: req.user });
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
 
 app.get('/profile', (req, res) => res.render('profile', { user: req.user }));
 

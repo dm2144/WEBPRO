@@ -47,12 +47,7 @@ exports.login=async(req,res)=>{
                         ),
                         httpOnly: true
                     }
-                    // const cookieOptions = {
-                    //     expires: new Date(
-                    //         Date.now() + parseInt(process.env.JWT_COOKIE_EXPIRES, 10) * 24 * 60 * 60 * 1000
-                    //     ),
-                    //     httpOnly: true
-                    // };
+                   
                     console.log("JWT_COOKIE_EXPIRES:", process.env.JWT_COOKIE_EXPIRES);
 
                     
@@ -70,49 +65,6 @@ exports.login=async(req,res)=>{
 
 }
 
-//     try {
-//         const email = req.body.email;
-//         const password = req.body.password;
-
-//         if (!email || !password) {
-//             return res.status(400).render('login', {
-//                 message: 'Please provide an email and password'
-//             });
-//         }
-   
-//     db.query('SELECT email FROM users WHERE email=?', [email], async (error, result) => {
-        
-//         console.log(result);
-//         if(!result || !(await bcrypt.compare(password,result[0].password))){
-//             console.log("Password comparison failed");
-//             res.status(401).render('login',{
-//                 message:'email or password is incorrect'
-//             })
-//         }else{
-//             console.log("Password comparison succeeded");
-//             const id=result[0].id;
-
-//             const token=jwt.sign({id},process.env.JWT_SECRET,{
-//                 expiresIn:process.env.JWT_EXPIRES_IN
-//             });
- 
-//             console.log("The token is:"+token);
-//             const cookieOptions={
-//                 expires:new Date(
-//                     Date.now()+process.env.JWT_COOKIE_EXPIRES *24*60*60*1000
-//                 ),
-//                 httpOnly:true
-//             }
-//             res.cookie('jwt',token,cookieOptions);
-//             res.status(200).redirect("/profile");
-//         }
-//         })
-//     }catch(error){
-//         console.log(error);
-//     }
-
-
-
 exports.register=(req,res)=>{
     console.log(req.body);
 
@@ -120,25 +72,6 @@ exports.register=(req,res)=>{
     const email=req.body.email;
     const password=req.body.password;
     const passwordConfirm=req.body.passwordConfirm;
-
-    // db.query('SELECT email FROM users WHERE email=?',[email,async(error,result)=>{
-    //     if (error){
-    //         console.log(error);
-    //     }
-    //     if (result.length>0){
-    //         return res.sender('register'),{
-    //             message:'This email is already in use..'
-    //         }
-    //     }else if (password!==passwordConfirm){
-    //         return res.render('register',{
-    //             message:'Passwords do not match'
-    //         });
-    //     }
-    //     console.log('Before hashing:', password);
-    //     let hashedPassword=await bcrypt.hash(password,8);
-    //     console.log(hashedPassword)
-    // }
-// ])
 
 
 db.query('SELECT email FROM users WHERE email=?', [email], async (error, result) => {
@@ -239,30 +172,5 @@ exports.isLoggedIn = async (req, res, next) => {
 };
 
 
-
-
-// exports.isLoggedIn = async (req, res, next) => {
-//     try {
-//         if (req.cookies.jwt) {
-//             const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-//             console.log(decoded);
-
-//             const result = await promisify(db.query).bind(db)('SELECT * FROM users WHERE id=?', [decoded.id]);
-
-//             if (!result || result.length === 0) {
-//                 return next();
-//             }
-
-//             req.user = result[0];
-//             console.log("user is", req.user);
-//             return next();
-//         } else {
-//             next();
-//         }
-//     } catch (error) {
-//         console.log(error);
-//         return next();
-//     }
-// };
 
 
