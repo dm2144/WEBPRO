@@ -10,16 +10,16 @@ nav ul {
     justify-content: space-around;
     align-items: center;
     }
-    nav li {
+nav li {
     list-style: none;
     }
-    nav li a {
+nav li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 8px;
     }
-    nav li a:hover {
+nav li a:hover {
     color: yellow;
     text-decoration: none;
     }
@@ -30,5 +30,27 @@ nav ul {
     .avatar {
     width: 65%;
     border-bottom: 1px solid rgba(0,0,0,0.125);
+
+    }
+
+    .table-container {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
     }
     
