@@ -96,7 +96,7 @@ db.query('SELECT email FROM users WHERE email=?', [email], async (error, result)
     }
     else{
         console.log(result)
-        return res.redirect('/profile');
+        // return res.redirect('/profile');
         return res.render('register',{
             message:'user registered'
         });
